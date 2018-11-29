@@ -36,11 +36,11 @@ in
               sha256 = "1p7rc5m70rkm1ma8gnihfwyxysr0n3wxk8ijhp6qjnqp5zwifhhn";
             }) {}));
 
-            pact = pkgs.haskell.lib.dontCheck (self.callCabal2nix "pact" (pkgs.fetchFromGitHub {
-              owner = "kadena-io";
-              repo = "pact";
-              rev = "8f4216d274749507158c5e23be8c4b32a75191a6";
-              sha256 = "13rpmjyr1x5z0yfxzr16ml1nmx6ln6bs9xwlzh5c6c6kkqwxpkjv";
+            seal = pkgs.haskell.lib.dontCheck (self.callCabal2nix "seal" (pkgs.fetchFromGitHub {
+              owner = "Gyoung";
+              repo = "seal-pact";
+              rev = "739037558c64d6f0bc13e03f06de1542557b0eef";
+              sha256 = "1ycgydi67izpf6irbdsb2j11mz60qhzb83h9f8x4fdvvpg7z791p";
             }) {});
 
             reflex-dom-ace = (self.callCabal2nix "reflex-dom-ace" (pkgs.fetchFromGitHub {
@@ -51,11 +51,18 @@ in
             }) {});
 
             # sbv >= 7.6
+            # sbv = pkgs.haskell.lib.dontCheck (self.callCabal2nix "sbv" (pkgs.fetchFromGitHub {
+            #   owner = "LeventErkok";
+            #   repo = "sbv";
+            #   rev = "dbbdd396d069dc8235f5c8cf58209886318f6525";
+            #   sha256 = "0s607qbgiykgqv2b5sxcvzqpj1alxzqw6szcjzhs4hxcbbwkd60y";
+            # }) {});
+
             sbv = pkgs.haskell.lib.dontCheck (self.callCabal2nix "sbv" (pkgs.fetchFromGitHub {
               owner = "LeventErkok";
               repo = "sbv";
-              rev = "dbbdd396d069dc8235f5c8cf58209886318f6525";
-              sha256 = "0s607qbgiykgqv2b5sxcvzqpj1alxzqw6szcjzhs4hxcbbwkd60y";
+              rev = "3dc60340634c82f39f6c5dca2b3859d10925cfdf";
+              sha256 = "18xcxg1h19zx6gdzk3dfs87447k3xjqn40raghjz53bg5k8cdc31";
             }) {});
 
             # dontCheck is here because a couple tests were failing
@@ -72,6 +79,48 @@ in
               rev = "6ee9fcb026ebdb49b810802a981d166680d867c9";
               sha256 = "09fcf896bs6i71qhj5w6qbwllkv3gywnn5wfsdrcm0w1y6h8i88f";
             }) {}) "ghcjs");
+
+           parser-combinators = pkgs.haskell.lib.dontCheck (self.callCabal2nix "parser-combinators" (pkgs.fetchFromGitHub {
+              owner = "mrkkrp";
+              repo = "parser-combinators";
+              rev = "dd6599224fe7eb224477ef8e9269602fb6b79fe0";
+              sha256 = "11cpfzlb6vl0r5i7vbhp147cfxds248fm5xq8pwxk92d1f5g9pxm";
+            }) {});
+
+            megaparsec = pkgs.haskell.lib.dontCheck (self.callCabal2nix "megaparsec" (pkgs.fetchFromGitHub {
+              owner = "mrkkrp";
+              repo = "megaparsec";
+              rev = "7b271a5edc1af59fa435a705349310cfdeaaa7e9";
+              sha256 = "0415z18gl8dgms57rxzp870dpz7rcqvy008wrw5r22xw8qq0s13c";
+            }) {});
+
+             algebraic-graphs = pkgs.haskell.lib.dontCheck (self.callCabal2nix "algebraic-graphs" (pkgs.fetchFromGitHub {
+              owner = "snowleopard";
+              repo = "alga";
+              rev = "64e4d908c15d5e79138c6445684b9bef27987e8c";
+              sha256 = "0v8knhmrd0qrpx2lxlk7b14j79q170jmb1l0pzk93x90b2v638yw";
+            }) {});
+
+            mmorph = pkgs.haskell.lib.dontCheck (self.callCabal2nix "mmorph" (pkgs.fetchFromGitHub {
+              owner = "Gabriel439";
+              repo = "Haskell-MMorph-Library";
+              rev = "c557fd52358d15c395c33b63a2e7e318160d735c";
+              sha256 = "0a96q893zzj8zsq815qzmk341ykjdk7qh8rpp541hj40f53k55ir";
+            }) {});
+
+             trifecta = pkgs.haskell.lib.dontCheck (self.callCabal2nix "trifecta" (pkgs.fetchFromGitHub {
+              owner = "ekmett";
+              repo = "trifecta";
+              rev = "c89be798e839ad12d7f29394e3654375dc6cf948";
+              sha256 = "10cmhskz8kh3ji15qzrkp9n9gnymhxz63sab7rm8jib11qhnrbw1";
+            }) {});
+
+            universum = pkgs.haskell.lib.dontCheck (self.callCabal2nix "universum" (pkgs.fetchFromGitHub {
+              owner = "serokell";
+              repo = "universum";
+              rev = "f868329d346d5b1acbd82c53bbdba884dcc21296";
+              sha256 = "1glz0grncyyhrr3z5l1g37hs0jsmlh7a6hj5ck95hcmgq3ja8kja";
+            }) {});
 
           };
     packages = {

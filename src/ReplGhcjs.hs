@@ -103,7 +103,7 @@ staticReplHeader :: Seq DisplayedSnippet
 staticReplHeader = S.fromList
       [ OutputSnippet ";; Welcome to the Pact interactive repl"
       , OutputSnippet ";; Use LOAD button to execute editor text"
-      , OutputSnippet ";; then just type at the \"pact>\" prompt to interact!"
+      , OutputSnippet ";; then just type at the \"seal>\" prompt to interact!"
       ]
 
 snippetWidget :: MonadWidget t m => DisplayedSnippet -> m ()
@@ -130,7 +130,7 @@ replWidget replClick initialCode = mdo
 replInput :: MonadWidget t m => Event t () -> m (Event t Text)
 replInput setFocus = do
     divClass "repl-input-controls" $ mdo
-      el "span" $ text "pact>"
+      el "span" $ text "seal>"
       let sv = leftmost
             [ mempty <$ enterPressed
             , fromMaybe "" . Z.safeCursor <$> tagPromptlyDyn commandHistory key
@@ -179,7 +179,7 @@ runReplStep
     -> m (ReplState, Seq DisplayedSnippet)
 runReplStep (s1,snippets1) e = do
     (eterm,s2) <- liftIO $ runStateT (evalRepl' $ T.unpack e) s1
-    return (s2, snippets1 <> S.fromList [InputSnippet ("pact> " <> e), OutputSnippet $ showResult eterm])
+    return (s2, snippets1 <> S.fromList [InputSnippet ("seal> " <> e), OutputSnippet $ showResult eterm])
 
 showResult :: Show a => Either String a -> Text
 showResult (Right v) = T.pack $ show v
@@ -193,7 +193,7 @@ controlBar = do
           elAttr "li" ("id" =: "pactVersion") $
             elAttr "a" ("target" =: "_blank" <> "href" =: "https://github.com/kadena-io/pact") $ do
               is <- liftIO $ initReplState StringEval
-              Right (TLiteral (LString ver) _) <- liftIO $ evalStateT (evalRepl' "(pact-version)") is
+              Right (TLiteral (LString ver) _) <- liftIO $ evalStateT (evalRepl' "(seal-version)") is
               text $ "Pact Version " <> ver
           d <- elAttr "li" ("class" =: "code_examples_fieldset") $ do
             elAttr "fieldset" ("class" =: "code_examples_fieldset") $ do

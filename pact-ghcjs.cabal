@@ -16,7 +16,7 @@ category:            Language
 build-type:          Simple
 cabal-version:       >=1.22
 
-executable pact
+executable seal
   main-is:             ReplGhcjs.hs
   cpp-options:  -DGHCJS_BROWSER
 
@@ -28,7 +28,7 @@ executable pact
     , jsaddle
     , lens
     , mtl
-    , pact
+    , seal
     , reflex
     , reflex-dom
     , reflex-dom-ace
