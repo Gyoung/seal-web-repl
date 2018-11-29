@@ -220,10 +220,9 @@ controlBar = do
 
 exampleData :: [(Text, Text)]
 exampleData =
-  [ ("Hello World", "examples/helloWorld-1.0.repl")
-  , ("Simple Payment", "examples/simplePayments-1.0.repl")
-  , ("International Payment", "examples/internationalPayments-1.0.repl")
-  , ("Commercial Paper", "examples/commercialPaper-1.0.repl")
+  [ ("Hello World", "examples/hello(1).repl")
+  , ("Simple Payment", "examples/simplePayment(1).repl")
+  , ("erc20basic", "examples/erc20basic(1).repl")
   ]
 
 demos :: Map Int (Text, Text)
