@@ -240,7 +240,7 @@ startingExpression = [s|
 
 ;; Simulate message data specifying an administrator keyset.
 ;; In production use 'mockAdminKey' would be an ED25519 hex-encoded public key.
-(env-data { "admin-keyset": ["mockAdminKey"] })
+(env-data { "admin-keyset" ["mockAdminKey"] })
 
 ;; Simulate that we've signed this transaction with the keyset.
 ;; In pact, signatures are pre-validated and represented in the
@@ -252,12 +252,11 @@ startingExpression = [s|
 (define-keyset 'admin-keyset (read-keyset "admin-keyset"))
 
 ;; Define the module.
-(module helloWorld 'admin-keyset
+(defcontract helloWorld 'admin-keyset
   "A smart contract to greet the world."
-  (defun hello (name)
+  (defn hello [name]
     "Do the hello-world dance"
-    (format "Hello {}!" [name]))
-)
+    (format "Hello {}!" [name])))
 
 ;; and say hello!
 (hello "world")
