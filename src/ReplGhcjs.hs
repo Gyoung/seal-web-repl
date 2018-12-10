@@ -191,10 +191,10 @@ controlBar = do
       elAttr "div" ("style" =: "display: block;") $ do
         o <- elAttr "ul" ("class" =: "view_mode") $ do
           elAttr "li" ("id" =: "pactVersion") $
-            elAttr "a" ("target" =: "_blank" <> "href" =: "https://github.com/kadena-io/pact") $ do
+            elAttr "a" ("target" =: "_blank" <> "href" =: "#") $ do
               is <- liftIO $ initReplState StringEval
               Right (TLiteral (LString ver) _) <- liftIO $ evalStateT (evalRepl' "(seal-version)") is
-              text $ "Pact Version " <> ver
+              text $ "Seal Version " <> ver
           d <- elAttr "li" ("class" =: "code_examples_fieldset") $ do
             elAttr "fieldset" ("class" =: "code_examples_fieldset") $ do
                 dropdown 0 (constDyn $ fmap fst demos) def
@@ -209,13 +209,13 @@ controlBar = do
             el "label" $
               elAttr "a" ("target" =: "_blank" <>
                           "style" =: "color:black;text-decoration:none;" <>
-                          "href" =: "http://pact-language.readthedocs.io"
+                          "href" =: "#"
                           ) $ do
                 elAttr "i" ("class" =: "fa fa-book" <> "aria-hidden" =: "true") blank
-                elAttr "span" ("id" =: "hideIfTiny" <> "class" =: "menu-link") $ text "Docs"
+                elAttr "span" ("id" =: "hideIfTiny" <> "class" =: "menu-link") $ text ""
           el "li" $
             elAttr "a" ("target" =: "_blank" <> "href" =: "http://kadena.io") $
-              elAttr "img" ("src" =: "img/kadena-logo84x20.png" <> "class" =: "logo-image") blank
+              elAttr "img" ("src" =: "#" <> "class" =: "logo-image") blank
         return o
 
 exampleData :: [(Text, Text)]
