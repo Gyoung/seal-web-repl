@@ -210,12 +210,9 @@ controlBar = do
               elAttr "a" ("target" =: "_blank" <>
                           "style" =: "color:black;text-decoration:none;" <>
                           "href" =: "#"
-                          ) $ do
-                elAttr "i" ("class" =: "fa fa-book" <> "aria-hidden" =: "true") blank
-                elAttr "span" ("id" =: "hideIfTiny" <> "class" =: "menu-link") $ text ""
+                          )
           el "li" $
-            elAttr "a" ("target" =: "_blank" <> "href" =: "http://kadena.io") $
-              elAttr "img" ("src" =: "#" <> "class" =: "logo-image") blank
+            elAttr "a" ("target" =: "_blank" <> "href" =: "http://kadena.io") 
         return o
 
 exampleData :: [(Text, Text)]
